@@ -1,0 +1,219 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org"
+      xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity4">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="apple-mobile-web-app-title" content="统一认证管理系统">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+    <meta name="viewport"
+          content="width=device-width, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0, user-scalable=no minimal-ui">
+    <meta name="_csrf" th:content="${_csrf.token }" />
+    <meta name="_csrf_header" th:content="${_csrf.headerName}" />
+
+    <title>统一认证管理系统</title>
+
+    <link rel="shortcut icon" th:href="@{app.ico}">
+    <link rel="stylesheet" th:href="@{/css/header_include_center.min.css}">
+    <link th:href="@{/css/Roboto.css}" rel="stylesheet" type="text/css">
+    <link th:href="@{/css/Open-Sans.css}" rel="stylesheet" type="text/css">
+
+    <script type="text/javascript" th:src="@{/scripts/jquery-3.2.1.min.js}"></script>
+
+    <style type="text/css">
+        object, embed {
+            -webkit-animation-duration: .001s;
+            -webkit-animation-name: playerInserted;
+            -ms-animation-duration: .001s;
+            -ms-animation-name: playerInserted;
+            -o-animation-duration: .001s;
+            -o-animation-name: playerInserted;
+            animation-duration: .001s;
+            animation-name: playerInserted;
+        }
+
+        @-webkit-keyframes playerInserted {
+            from {
+                opacity: 0.99;
+            }
+            to {
+                opacity: 1;
+            }
+        }
+
+        @-ms-keyframes playerInserted {
+            from {
+                opacity: 0.99;
+            }
+            to {
+                opacity: 1;
+            }
+        }
+
+        @-o-keyframes playerInserted {
+            from {
+                opacity: 0.99;
+            }
+            to {
+                opacity: 1;
+            }
+        }
+
+        @keyframes playerInserted {
+            from {
+                opacity: 0.99;
+            }
+            to {
+                opacity: 1;
+            }
+        }</style>
+</head>
+<!-- END HEAD -->
+
+<!-- BEGIN BODY -->
+<body class="pace-done">
+<div class="pace  pace-inactive">
+    <div class="pace-progress" data-progress-text="100%" data-progress="99"
+         style="transform: translate3d(100%, 0px, 0px);">
+        <div class="pace-progress-inner"></div>
+    </div>
+    <div class="pace-activity"></div>
+</div>
+<!-- mobile ul shade -->
+<div class="mobile-ui hidden" id="mobile-shade" style=""></div>
+<!-- mobile ul shade end -->
+<!-- START TOPBAR -->
+<div class="page-topbar">
+    <a href="https://www.pgyer.com/" target="_blank">
+        <div class="logo-area">
+        </div>
+    </a>
+    <div class="quick-area">
+        <div class="pull-left">
+            <ul class="info-menu left-links list-inline list-unstyled">
+                <li class="sidebar-toggle-wrap">
+                    <a href="javascript:void(0);" data-toggle="sidebar" class="sidebar_toggle">
+                        <i class="fa fa-bars"></i>
+                    </a>
+                </li>
+            </ul>
+        </div>
+        <div class="pull-right">
+            <ul class="info-menu right-links list-inline list-unstyled">
+                <li class="notify-toggle-wrapper showopacity">
+                    <a href="https://www.pgyer.com/my#" data-toggle="dropdown" class="toggle" id="dropdown-button">
+                        <i class="fa fa-bell"></i>
+                        <span class="badge badge-accent hide" id="notificationCount">0</span>
+                    </a>
+                    <div class="dropdown-menu notification-dropdown-alert dropdown-alert"
+                         onclick="event.stopPropagation();" id="dropdown">
+                        <div class="notification-dropdown-header text-center">
+                            <span>通知</span>
+                        </div>
+                        <div class="slimScrollDiv"
+                             style="position: relative; overflow: hidden; width: auto; height: 350px;">
+                            <div class="notification-list" id="notifyContent2"
+                                 style="overflow: hidden; width: auto; height: 350px;">
+                                <div style="text-align:center;margin-top:120px;"><h4 class="notification-empty-title">
+                                    当前没有通知</h4>
+                                    <p class="notification-empty-text">查看所有通知中可以查看历史通知</p></div>
+                            </div>
+                            <div class="slimScrollBar"
+                                 style="background: rgb(0, 0, 0); width: 7px; position: absolute; top: 0px; opacity: 0.4; display: block; border-radius: 7px; z-index: 99; right: 1px;"></div>
+                            <div class="slimScrollRail"
+                                 style="width: 7px; height: 100%; position: absolute; top: 0px; display: none; border-radius: 7px; background: rgb(51, 51, 51); opacity: 0.2; z-index: 90; right: 1px;"></div>
+                        </div>
+                        <a href="https://www.pgyer.com/notification" class="notification-link">查看所有通知</a>
+                    </div>
+                </li>
+
+                <li class="question-toggle-wrapper">
+                    <a href="https://www.pgyer.com/my#" data-toggle="dropdown" class="toggle"><i
+                            class="fa fa-question-circle" aria-hidden="true" style="font-size:16px;"></i></a>
+                    <ul class="dropdown-menu profile">
+                        <li><a href="http://kf.pgyer.com/ticket/add" target="_blank"><i class="fa fa-plus-circle"></i>提交工单</a>
+                        </li>
+                        <li><a href="http://kf.pgyer.com/" target="_blank"><i class="fa fa-file-text"></i>我的工单</a></li>
+                        <li><a href="https://www.pgyer.com/doc" target="_blank"><i class="fa fa-life-ring"></i>帮助文档</a>
+                        </li>
+                    </ul>
+                </li>
+                <li class="profile showopacity">
+                    <a href="https://www.pgyer.com/my#" data-toggle="dropdown" class="toggle">
+                        <img th:src="@{/images/profile.png}" alt="user-image" class="img-circle img-inline">
+                        <span class="user-icon"><img th:src="@{/images/free.png}"></span>
+                        <span class="user-name">管理员
+                            (<span class="user-certification" sec:authentication="name"></span>)
+                            <i class="fa fa-angle-down" style="padding-left:5px;"></i>
+                        </span>
+                    </a>
+                    <ul class="dropdown-menu profile">
+                        <li><a th:href="@{/get}"><i class="fa fa-cog"></i>账户设置</a></li>
+                        <li><a th:href="@{/logout}"><i class="fa fa-sign-out"></i>退出</a></li>
+                    </ul>
+                </li>
+            </ul>
+        </div>
+    </div>
+</div>
+<!-- END TOPBAR -->
+<!-- START CONTAINER -->
+<div class="page-container row-fluid container-fluid">
+    <!-- SIDEBAR - START -->
+    <div class="page-sidebar fixedscroll">
+        <!-- MAIN MENU - START -->
+        <div class="page-sidebar-wrapper ps-container" id="main-menu-wrapper" style="height: 914px;">
+            <ul class="wraplist" style="height: auto;">
+                <li class="open menu-title">
+                    <a href="https://www.pgyer.com/my">
+                        <i class="fa fa-home" aria-hidden="true"></i>
+                        <span class="title ">概述</span>
+                    </a>
+                </li>
+
+                <li class=" menu-title">
+                    <a th:href="@{/get}">
+                        <i class="fa fa-cog" aria-hidden="true"></i>
+                        <span class="title ">账户设置</span>
+                    </a>
+                </li>
+            </ul>
+            <div class="ps-scrollbar-x-rail" style="left: 0px; bottom: 3px;">
+                <div class="ps-scrollbar-x" style="left: 0px; width: 0px;"></div>
+            </div>
+            <div class="ps-scrollbar-y-rail" style="top: 0px; right: 3px;">
+                <div class="ps-scrollbar-y" style="top: 0px; height: 0px;"></div>
+            </div>
+        </div>
+        <!-- MAIN MENU - END -->
+
+    </div>
+    <!--  SIDEBAR - END -->
+
+</div>
+
+<!-- START CONTENT -->
+<section id="main-content" class="">
+    <section class="wrapper main-wrapper row" style="">
+
+
+        <div class="clearfix"></div>
+
+    </section>
+    <!-- END CONTENT -->
+    <!-- END CONTAINER -->
+
+    <script type="text/javascript">
+        var userKey = "89c5706dbf42865a6abff15832b467dd";
+        var ctx = "[[@{/}]]";
+        ctx = ctx.substr(0, ctx.lastIndexOf("/"));
+    </script>
+
+    <!-- CORE JS FRAMEWORK - START -->
+    <script type="text/javascript" th:src="@{/scripts/common.js}" th:inline="javascript"></script>
+    <script type="text/javascript" th:src="@{/scripts/main.js}" th:inline="javascript"></script>
+</section>
+</body>
+</html>
