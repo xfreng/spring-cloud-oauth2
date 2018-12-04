@@ -86,7 +86,7 @@
 <!-- mobile ul shade end -->
 <!-- START TOPBAR -->
 <div class="page-topbar">
-    <a href="https://www.pgyer.com/" target="_blank">
+    <a href="/" target="_blank">
         <div class="logo-area">
         </div>
     </a>
@@ -103,7 +103,7 @@
         <div class="pull-right">
             <ul class="info-menu right-links list-inline list-unstyled">
                 <li class="notify-toggle-wrapper showopacity">
-                    <a href="https://www.pgyer.com/my#" data-toggle="dropdown" class="toggle" id="dropdown-button">
+                    <a href="/my#" data-toggle="dropdown" class="toggle" id="dropdown-button">
                         <i class="fa fa-bell"></i>
                         <span class="badge badge-accent hide" id="notificationCount">0</span>
                     </a>
@@ -125,23 +125,23 @@
                             <div class="slimScrollRail"
                                  style="width: 7px; height: 100%; position: absolute; top: 0px; display: none; border-radius: 7px; background: rgb(51, 51, 51); opacity: 0.2; z-index: 90; right: 1px;"></div>
                         </div>
-                        <a href="https://www.pgyer.com/notification" class="notification-link">查看所有通知</a>
+                        <a href="/notification" class="notification-link">查看所有通知</a>
                     </div>
                 </li>
 
                 <li class="question-toggle-wrapper">
-                    <a href="https://www.pgyer.com/my#" data-toggle="dropdown" class="toggle"><i
+                    <a href="/my#" data-toggle="dropdown" class="toggle"><i
                             class="fa fa-question-circle" aria-hidden="true" style="font-size:16px;"></i></a>
                     <ul class="dropdown-menu profile">
-                        <li><a href="http://kf.pgyer.com/ticket/add" target="_blank"><i class="fa fa-plus-circle"></i>提交工单</a>
+                        <li><a href="javascript:void(0);" target="_blank"><i class="fa fa-plus-circle"></i>提交工单</a>
                         </li>
-                        <li><a href="http://kf.pgyer.com/" target="_blank"><i class="fa fa-file-text"></i>我的工单</a></li>
-                        <li><a href="https://www.pgyer.com/doc" target="_blank"><i class="fa fa-life-ring"></i>帮助文档</a>
+                        <li><a href="javascript:void(0);" target="_blank"><i class="fa fa-file-text"></i>我的工单</a></li>
+                        <li><a href="/doc" target="_blank"><i class="fa fa-life-ring"></i>帮助文档</a>
                         </li>
                     </ul>
                 </li>
                 <li class="profile showopacity">
-                    <a href="https://www.pgyer.com/my#" data-toggle="dropdown" class="toggle">
+                    <a href="/my#" data-toggle="dropdown" class="toggle">
                         <img th:src="@{/images/profile.png}" alt="user-image" class="img-circle img-inline">
                         <span class="user-icon"><img th:src="@{/images/free.png}"></span>
                         <span class="user-name">管理员
@@ -166,14 +166,13 @@
         <!-- MAIN MENU - START -->
         <div class="page-sidebar-wrapper ps-container" id="main-menu-wrapper" style="height: 914px;">
             <ul class="wraplist" style="height: auto;">
-                <li class="open menu-title">
-                    <a href="https://www.pgyer.com/my">
+                <li class="menu-title">
+                    <a href="/my">
                         <i class="fa fa-home" aria-hidden="true"></i>
                         <span class="title ">概述</span>
                     </a>
                 </li>
-
-                <li class=" menu-title">
+                <li class="menu-title">
                     <a th:href="@{/get}">
                         <i class="fa fa-cog" aria-hidden="true"></i>
                         <span class="title ">账户设置</span>
